@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import LifeCycleMethods from "./components/LifeCycleMethods";
+import UseEffectHook from "./components/UseEffectHook";
+import User from "./components/User";
 
 function App() {
+  const [toggle, setToggle] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container text-center mt-4">
+      <button className="btn btn-danger" onClick={() => setToggle(!toggle)}>
+        {toggle ? "Hide" : "Show"}
+      </button>
+
+      {/* {toggle ? <LifeCycleMethods /> : null} aşagıdaki kullanım daha efektif. bestpraktıs. */}
+      {toggle && <LifeCycleMethods />}
+
+      {toggle && <UseEffectHook />}
+
+      <User />
     </div>
   );
 }
